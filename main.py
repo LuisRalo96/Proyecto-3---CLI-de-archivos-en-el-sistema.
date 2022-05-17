@@ -1,4 +1,5 @@
 import os
+import platform
 from pathlib import Path
 
 # Se obtiene el ruta actual en la que se trabaja
@@ -67,8 +68,12 @@ def limpiar_pantalla():
     while True:
         continuar = (input('¿Quiere hacer otra consulta ? Si / No: '))
         if continuar.upper() == "SI":
-            os.system('clear')
-            break
+            if platform.system() == 'Windows':
+                os.system('cls')
+                break
+            else:
+                os.system('clear')
+                break
         elif continuar.upper() == "NO":
             print('Fin de la consulta')
             exit()
